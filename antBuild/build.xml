@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<property name="src.dir" value="src" />
+<property name="tst.dir" value="tst" />
+
+<property name="build.dir" value="build" />
+<property name="bin.dir" value="${build.dir}/bin" />
+<property name="lib.dir" value="${build.dir}/lib" />
+
+
+<target name="init">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${bin.dir}" />
+    <mkdir dir="${lib.dir}" />
+</target>
+
+<target name="compile" depends="init">
+    <javac srcdir="${src.dir}" destdir="${bin.dir}" />
+</target>
+
+<target name="release" depends="compile">
+    <jar jarfile="${lib.dir}/${project.name}-${DSTAMP}.jar" basedir="${bin.dir}">
+</target>
+
+<target name="clean">
+    <delete dir=${build.dir} />
+</target>
